@@ -6,7 +6,7 @@ import axios from 'axios'
 const Todo = () => {
 
   let { id } = useParams()
-  let [todoDetails, setTodoDetails] = useState()
+  let [todoDetails, setTodoDetails] = useState( {} )
 
   useEffect(() => {
     axios
@@ -16,11 +16,14 @@ const Todo = () => {
         setTodoDetails(responseTodo)
       } )
   }, [])
-  console.log(todoDetails);
+  let { completed, userId, id: todoId, title } = todoDetails
 
   return (
     <div>
-      <h1>{ id }</h1>
+      { todoDetails && <h1>{ `Todo Id: ${ todoId }` }</h1> }
+      { todoDetails && <h1>{ `Completed: ${ completed }` }</h1> }
+      { todoDetails && <h1>{ `UserId: ${ userId }` }</h1> }
+      { todoDetails && <h1>{ `Title: ${ title }` }</h1> }
     </div>
   )
 }
