@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Header = ( props ) => {
-  let { firstName, secondName, age } = props
+const Header = () => {
+  let [count, setCount] = useState( 0 )
+
+  useEffect( () => {
+    console.log( 'useEffect is running' );
+  }, [  ] )
+
   return (
     <div>
-      <h1>Employ name: { firstName } { secondName } { age } </h1>
+      <h6>Counter</h6>
+      <p>Current count is { count }</p>
+      <button onClick={ () => setCount( count + 1 ) } >Increment Count</button>
     </div>
   )
 }
