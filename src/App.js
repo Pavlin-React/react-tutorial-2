@@ -1,22 +1,19 @@
-import { useState } from 'react'
-import Header from './component/Header'
+import Todo from './Todo'
+import Todos from './Todos'
 import './App.css'
-import TodoList from './component/TodoList'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
 
 const App = () => {
 
-  let [showHeader, setShowHeader] = useState( false )
-
 
   return (
-    <div className="App">
-      <h1>Our App</h1>
-      <button onClick={ () => setShowHeader( !showHeader ) }>
-        { showHeader ? 'Hide Counter' : 'Show Counter' }
-      </button>
-      { showHeader && <Header /> }
-      <TodoList />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path='/' children={ <Todos /> } />
+        <Route path='/todo/:id' children={ <Todo /> } />
+      </Switch>
+    </Router>
   )
 }
 
