@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './component/Header'
 import './App.css'
+import TodoList from './component/TodoList'
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
         { showHeader ? 'Hide Counter' : 'Show Counter' }
       </button>
       { showHeader && <Header /> }
+      <TodoList />
     </div>
   )
 }
